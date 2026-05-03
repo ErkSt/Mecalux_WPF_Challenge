@@ -3,7 +3,6 @@ using Entidades.Enums;
 using Entidades.Interfaces;
 using Negocio.DTOs.Requests;
 using Negocio.DTOs.Responses;
-using Negocio.Helpers;
 using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,6 @@ namespace Negocio.Services
         {
             _parametros = parametros;
         }
-
         public async Task<AnalizarTextoResponse> AnalizarTexto(AnalizarTextoRequest request, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(request.Texto))
