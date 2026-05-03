@@ -16,10 +16,12 @@
           DisplayMemberPath="Descripcion" />
 
         <Label Content="Texto:"/>
-        <TextBox Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+        <TextBox Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" AcceptsReturn="True" 
+         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MinHeight="100" />
 
-        <Button Content="Reordenar" Height="30" Background="#2196F3" Foreground="White"/>
+        <Button Content="Reordenar" Command="{Binding OrdenarTextoCommand}"  Height="30" Background="#2196F3" Foreground="White"/>
 
-        <TextBlock Text="{Binding TextoOrdenado}" FontSize="18" Margin="0,0,0,20"/>
+        <Label Content="Texto reordenado:" />
+        <TextBlock Text="{Binding TextoOrdenado}" FontSize="18" Margin="0,0,0,20" TextWrapping="Wrap" MinHeight="100"/>
     </StackPanel>
 </UserControl>

@@ -1,4 +1,7 @@
 ﻿using Entidades.Clases;
+using Mecalux_WPFChallenge.Commands;
+using Negocio.DTOs.Requests;
+using Negocio.DTOs.Responses;
 using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,6 +15,8 @@ namespace Mecalux_WPFChallenge.ViewModels
     public class OrdenarTextoViewModel : ViewModelBase
     {
         private IProcesadorTextoService _procesadorTexto;
+        public AsyncRelayCommand OrdenarTextoCommand { get; }
+
         public ObservableCollection<OpcionTipoOrdenamiento> TiposOrdenamiento { get; } = new ObservableCollection<OpcionTipoOrdenamiento>();
 
         private OpcionTipoOrdenamiento _tipoOrdenamiento;
@@ -37,7 +42,6 @@ namespace Mecalux_WPFChallenge.ViewModels
             }
         }
 
-
         private string _textoOrdenado;
         public string TextoOrdenado
         {
@@ -49,11 +53,28 @@ namespace Mecalux_WPFChallenge.ViewModels
             }
         }
 
-        public OrdenarTextoViewModel(IProcesadorTextoService service) {
+        public OrdenarTextoViewModel(IProcesadorTextoService service)
+        {
             _procesadorTexto = service;
+            OrdenarTextoCommand = new AsyncRelayCommand(OrdenarTextoAsync);
             _ = LoadDataAsync();
         }
 
+        public async Task OrdenarTextoAsync()
+        {
+           
+
+
+            OrdenarTextoRequest request = new OrdenarTextoRequest
+            {
+                Texto = Texto,
+                TipoOrdenamiento = TipoOrdenamiento.Tipo
+            };
+
+            OrdenarTextoResponse response = await _procesadorTexto.OrdenarTexto(request, default);
+            TextoOrdenado = response.TextoOrdenado;
+
+        }
         public async Task LoadDataAsync()
         {
             var datos = await _procesadorTexto.GetOpcionesOrdenamiento();
