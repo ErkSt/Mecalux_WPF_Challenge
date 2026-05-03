@@ -1,0 +1,29 @@
+## --- Visual Studio ---
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+
+## --- Resharper / Tools ---
+_ReSharper*/
+*.[Rr]e[Ss]harper.user
+*.dotCover
+
+## --- Build Artifacts ---
+*.pdb
+*.exe
+*.dll
+*.msi
+*.nupkg
+
+## --- Test Results ---
+TestResults/
+*.trx
+
+## --- OS Related ---
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+Thumbs.db
