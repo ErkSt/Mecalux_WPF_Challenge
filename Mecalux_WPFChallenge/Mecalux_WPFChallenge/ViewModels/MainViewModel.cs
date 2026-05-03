@@ -34,17 +34,18 @@ namespace Mecalux_WPFChallenge.ViewModels
             _textoService = textoService;
             AbrirOrdenarTextoCommand = new AsyncRelayCommand(AbrirOrdenarTexto);
             AbrirAnalizarTextoCommand = new RelayCommand(AbrirAnalizarTexto);
-        }   
+        }
 
         private async Task AbrirOrdenarTexto()
         {
-           _currentViewModel = new OrdenarTextoViewModel();
-            return;
+            CurrentViewModel = new OrdenarTextoViewModel(_textoService);
         }
 
         private void AbrirAnalizarTexto()
         {
-           _currentViewModel = new AnalizarTextoViewModel();
+           CurrentViewModel = new AnalizarTextoViewModel(_textoService);
         }
+
+
     }
 }

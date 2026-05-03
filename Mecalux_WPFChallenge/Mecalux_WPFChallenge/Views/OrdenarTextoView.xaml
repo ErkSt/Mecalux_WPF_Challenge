@@ -6,7 +6,20 @@
              xmlns:local="clr-namespace:Mecalux_WPFChallenge.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Ordenar Texto: " FontSize="18" Margin="0,0,0,20"/>
+
+        <Label Content="Tipo ordenado:" />
+        <ComboBox Margin="0,0,0,12"
+          ItemsSource="{Binding TiposOrdenamiento}"
+          SelectedItem="{Binding TipoOrdenamiento}"
+          DisplayMemberPath="Descripcion" />
+
+        <Label Content="Texto:"/>
+        <TextBox Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+
+        <Button Content="Reordenar" Height="30" Background="#2196F3" Foreground="White"/>
+
+        <TextBlock Text="{Binding TextoOrdenado}" FontSize="18" Margin="0,0,0,20"/>
+    </StackPanel>
 </UserControl>
