@@ -45,11 +45,11 @@ namespace Negocio.Services
                     if (char.IsWhiteSpace(request.Texto[i]))
                     {
                         espaciosEnBlanco++;
+
                         if (flagPalabra) {
                             palabras++;
+                            flagPalabra = false;
                         }
-
-                        flagPalabra = false;
                     }
                     else {
                         flagPalabra = true;
@@ -59,6 +59,11 @@ namespace Negocio.Services
                             guiones++;
                         }
                     }
+                }
+
+                if (flagPalabra)
+                {
+                    palabras++;
                 }
 
                 return new AnalizarTextoResponse { 
