@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Mecalux_WPFChallenge.ViewModels
 {
-    public class AnalizarTextoViewModel : ViewModelBase
+    public class AnalizarTextoViewModel : FormularioBase
     {
         private IProcesadorTextoService _procesadorTexto;
         public AsyncRelayCommand AnalizarTextoCommand { get; }

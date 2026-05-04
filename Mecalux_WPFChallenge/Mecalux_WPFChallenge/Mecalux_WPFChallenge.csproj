@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Services\InyeccionDependenciasService.cs" />
     <Compile Include="ViewModels\AnalizarTextoViewModel.cs" />
+    <Compile Include="ViewModels\FormularioBase.cs" />
     <Compile Include="ViewModels\OrdenarTextoViewModel.cs" />
     <Compile Include="Views\AnalizarTextoView.xaml.cs">
       <DependentUpon>AnalizarTextoView.xaml</DependentUpon>
@@ -79,6 +80,10 @@
     <Compile Include="Views\OrdenarTextoView.xaml.cs">
       <DependentUpon>OrdenarTextoView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\EstilosValidacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AnalizarTextoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +152,9 @@
       <Project>{45e9f803-2893-4ecb-9543-38ce014ffccc}</Project>
       <Name>Repositorio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FlagFinalizacion.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

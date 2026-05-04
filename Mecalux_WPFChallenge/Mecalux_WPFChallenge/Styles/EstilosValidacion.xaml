@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate x:Key="GlobalErrorTemplate">
+        <StackPanel>
+            <AdornedElementPlaceholder x:Name="placeholder"/>
+            <ItemsControl ItemsSource="{Binding AdornedElement.(Validation.Errors), ElementName=placeholder}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="DarkRed" FontSize="10" FontStyle="Italic"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ControlTemplate>
+
+
+    <Style x:Key="ValidatableTextBox" TargetType="TextBox">
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource GlobalErrorTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip" 
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ValidatableComboBox" TargetType="ComboBox">
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource GlobalErrorTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

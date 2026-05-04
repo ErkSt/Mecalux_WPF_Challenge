@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Mecalux_WPFChallenge.ViewModels
 {
-    public class OrdenarTextoViewModel : ViewModelBase
+    public class OrdenarTextoViewModel : FormularioBase
     {
         private IProcesadorTextoService _procesadorTexto;
         public AsyncRelayCommand OrdenarTextoCommand { get; }
@@ -28,6 +28,7 @@ namespace Mecalux_WPFChallenge.ViewModels
                 if (_tipoOrdenamiento == value) return;
                 _tipoOrdenamiento = value;
                 RaisePropertyChanged(nameof(TipoOrdenamiento));
+                ValidarTipo();
             }
         }
 
@@ -60,10 +61,19 @@ namespace Mecalux_WPFChallenge.ViewModels
             _ = LoadDataAsync();
         }
 
+        private void ValidarTipo()
+        {
+            ClearErrors(nameof(TipoOrdenamiento));
+            if (_tipoOrdenamiento == null) {
+                AddError(nameof(TipoOrdenamiento), "El tipo es obligatorio.");
+            }
+        }
+
         public async Task OrdenarTextoAsync()
         {
-           
-
+            ValidarTipo();
+            if (HasErrors)
+                return;
 
             OrdenarTextoRequest request = new OrdenarTextoRequest
             {
@@ -83,6 +93,11 @@ namespace Mecalux_WPFChallenge.ViewModels
             foreach (var item in datos)
             {
                 TiposOrdenamiento.Add(item);
+            }
+
+            if (_tipoOrdenamiento == null && TiposOrdenamiento.Count > 0)
+            {
+                TipoOrdenamiento = TiposOrdenamiento[0];
             }
         }
     }

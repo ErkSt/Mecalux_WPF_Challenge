@@ -11,7 +11,7 @@
 
         <Label Content="Texto:"/>
         <TextBox Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" 
-                 AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MinHeight="100"/>
+                 AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MinHeight="100"  />
 
         <Button Content="Analizar" Command="{Binding AnalizarTextoCommand}"  Height="30" Background="#2196F3" Foreground="White"/>
 

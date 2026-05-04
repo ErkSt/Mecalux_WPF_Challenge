@@ -12,8 +12,8 @@
         <Label Content="Tipo ordenado:" />
         <ComboBox Margin="0,0,0,12"
           ItemsSource="{Binding TiposOrdenamiento}"
-          SelectedItem="{Binding TipoOrdenamiento}"
-          DisplayMemberPath="Descripcion" />
+          SelectedItem="{Binding TipoOrdenamiento, ValidatesOnNotifyDataErrors=True}"
+          DisplayMemberPath="Descripcion" Style="{StaticResource ValidatableComboBox}" />
 
         <Label Content="Texto:"/>
         <TextBox Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" AcceptsReturn="True" 
